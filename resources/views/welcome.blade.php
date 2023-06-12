@@ -14,7 +14,7 @@
 </head>
 
 <body class="antialiased">
-    <h1 class="font-bold text-3xl">
+    <h1 class="text-3xl font-bold">
         Hello world!
     </h1>
 </body>
