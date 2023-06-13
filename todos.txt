@@ -1,4 +1,4 @@
 Todos
 
 [ ] Magic Auth view
-[ ]
+[x] Remove unwanted fonts from app.blade.php/tailwind.config.js

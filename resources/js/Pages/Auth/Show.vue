@@ -29,7 +29,9 @@
                 <div>
                     <ApplicationLogo class="h-10 w-auto"></ApplicationLogo>
 
-                    <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">Get started</h2>
+                    <h2 class="mt-8 font-heading text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                        Get started
+                    </h2>
                 </div>
 
                 <div class="mt-10">
@@ -45,7 +47,7 @@
                                     required
                                     autocomplete="email"
                                 />
-                                <InputError class="mt-2 font-light" :message="form.errors.email"></InputError>
+                                <InputError class="mt-2" :message="form.errors.email"></InputError>
                             </div>
 
                             <div>
@@ -53,7 +55,7 @@
                             </div>
 
                             <FlashSuccess
-                                v-if="form.wasSuccessful"
+                                v-if="form.recentlySuccessful"
                                 message="An email has been sent with the link to get inside."
                             ></FlashSuccess>
                         </form>

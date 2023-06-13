@@ -10,7 +10,7 @@
                 <CheckCircleIcon class="h-5 w-5 text-green-400" aria-hidden="true" />
             </div>
             <div class="ml-3">
-                <p class="text-sm text-green-800">{{ message }}</p>
+                <p class="text-sm font-medium text-green-800">{{ message }}</p>
             </div>
         </div>
     </div>

@@ -15,7 +15,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Unbounded', 'Mulish', ...defaultTheme.fontFamily.sans],
+                heading: ['Unbounded', ...defaultTheme.fontFamily.sans],
+                sans: ['Pathway Extreme', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 gray: colors.zinc,
