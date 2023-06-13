@@ -1,5 +1,7 @@
 import forms from '@tailwindcss/forms';
 import defaultTheme from 'tailwindcss/defaultTheme';
+const colors = require('tailwindcss/colors');
+const theme = require('./theme');
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -13,7 +15,11 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Unbounded', 'Mulish', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                gray: colors.zinc,
+                ...theme.colors,
             },
         },
     },
