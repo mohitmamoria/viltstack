@@ -1,0 +1,51 @@
+Models
+- User
+- Target
+- Link
+- Reward
+
+Targets
+==
+- Starts by adding the URL
+- Fetches the open graph meta tags and renders a preview
+- Choose a goal based on the kind of URL
+    - Youtube video
+        - More subscribers (option to edit the heading and sub-heading)
+        - More reach/shares (option to edit the heading and sub-heading)
+        - Custom CTA (Buy/Lead Forms/etc)
+    - Podcasts
+        - More subscribers (?)
+        - More reach
+        - Custom CTA
+    - Any other URL
+        - More reach
+- Edit the Goal heading and sub-heading
+- Choose rewards (one or stack multiple)
+- Publish!
+
+Rewards
+==
+- Top X (overall/weekly/monthly) per target/channel
+- Everyone who qualifies (eg. everyone who brings in X views)
+
+Copywriting
+==
+"A new mission has just dropped!"
+"Win X on completing the mission."
+
+Mission
+- URL
+- Objective Type
+- Rewards
+- Ends On
+
+Rewards
+- Name ("IG AMA")
+- Description ("Ask me anything and I'll reply to your question on my IG story")
+
+Mission_Reward
+- Mission ID
+- Reward ID
+- Order
+- Available ("5")
+- [TBD] Top X/First X to qualify
