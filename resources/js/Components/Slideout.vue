@@ -1,5 +1,4 @@
 <script setup>
-    import Button from '@/Components/Button.vue';
     import CloseButton from '@/Components/CloseButton.vue';
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
     import { ref, Teleport } from 'vue';
@@ -35,14 +34,14 @@
 
 <template>
     <Teleport to="body">
-        <TransitionRoot as="template" :show="open">
+        <TransitionRoot as="template" :show="open" appear>
             <Dialog as="div" class="relative z-10" @close="reject">
                 <TransitionChild
                     as="template"
                     enter="ease-in-out duration-300"
                     enter-from="opacity-0"
                     enter-to="opacity-100"
-                    leave="ease-in-out duration-300"
+                    leave="ease-in-out duration-200"
                     leave-from="opacity-100"
                     leave-to="opacity-0"
                 >
@@ -57,7 +56,7 @@
                                 enter="transform transition ease-in-out duration-300"
                                 enter-from="translate-x-full"
                                 enter-to="translate-x-0"
-                                leave="transform transition ease-in-out duration-300"
+                                leave="transform transition ease-in-out duration-200"
                                 leave-from="translate-x-0"
                                 leave-to="translate-x-full"
                             >
@@ -87,10 +86,6 @@
                                         </div>
                                         <div class="flex flex-shrink-0 justify-end space-x-2 px-4 py-4">
                                             <slot name="footer" :resolve="resolve" :reject="reject"></slot>
-                                            <Button hierarchy="secondary" type="button" @click="reject()">
-                                                Cancel
-                                            </Button>
-                                            <Button @click.prevent="resolve({ msg: 'yes' })">Create</Button>
                                         </div>
                                     </form>
                                 </DialogPanel>

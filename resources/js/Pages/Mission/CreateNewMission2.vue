@@ -3,13 +3,20 @@
     import Card from '@/Components/Card.vue';
     import InputError from '@/Components/InputError.vue';
     import InputLabel from '@/Components/InputLabel.vue';
-    import Slideout from '@/Components/Slideout.vue';
+    import Modal from '@/Components/Modal.vue';
     import TextInput from '@/Components/TextInput.vue';
+    import { useAPIForm } from '@/Composables/useAPIForm';
     import { useForm } from '@inertiajs/vue3';
 
     const form = useForm({
         url: '',
     });
+
+    const apiForm = useAPIForm({
+        url: '',
+        foo: 'bar',
+    });
+    console.log(apiForm);
 
     const submit = (resolve) => {
         form.clearErrors();
@@ -37,26 +44,56 @@
         //     onSuccess: () => resolve({ success: true }),
         // });
     };
+
+    const submit2 = (resolve) => {
+        console.log('submitting 2');
+        apiForm.post(route('api.missions.store'), {
+            onBefore: () => {
+                console.log('before');
+            },
+            onStart: () => {
+                console.log('start');
+            },
+            onSuccess: (response) => {
+                console.log('yay!', response);
+            },
+            onError: (error) => {
+                console.log('oops!', error);
+            },
+            onProgress: (event) => {
+                console.log('progress!', event);
+            },
+            onFinish: () => {
+                console.log('finished!');
+            },
+        });
+        // .then((response) => {
+        //     console.log(response);
+        // })
+        // .catch((errors) => {
+        //     console.log(errors);
+        // });
+    };
 </script>
 
 <template>
-    <Slideout title="New Mission" description="Start with a URL and then add rewards for the winners">
+    <Modal title="New Mission" description="Start with a URL and then add rewards for the winners">
         <template #default="{ resolve }">
-            <form @submit.prevent="submit(resolve)">
+            <form @submit.prevent="submit2(resolve)">
                 <div class="space-y-6">
                     <div>
                         <InputLabel>URL</InputLabel>
-                        <TextInput v-model="form.url" id="url" type="url" class="mt-2 block w-full" required />
-                        <InputError :message="form.errors.url"></InputError>
+                        <TextInput v-model="apiForm.url" id="url" type="url" class="mt-2 block w-full" required />
+                        <InputError :message="apiForm.errors.url"></InputError>
                     </div>
-                    <Card> {{ form.errors }} </Card>
+                    <Card> {{ apiForm }} </Card>
                 </div>
             </form>
         </template>
 
         <template #footer="{ resolve, reject }">
             <Button hierarchy="secondary" type="button" @click="reject()"> Cancel </Button>
-            <Button @click.prevent="submit(resolve)" :class="{ 'opacity-25': form.processing }">Create</Button>
+            <Button @click.prevent="submit2(resolve)" :class="{ 'opacity-25': form.processing }">Create</Button>
         </template>
-    </Slideout>
+    </Modal>
 </template>
