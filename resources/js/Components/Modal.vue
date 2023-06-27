@@ -84,7 +84,7 @@
                                         </div>
 
                                         <div class="mt-2">
-                                            <slot></slot>
+                                            <slot :resolve="resolve" :reject="reject"></slot>
                                         </div>
                                     </div>
                                 </div>

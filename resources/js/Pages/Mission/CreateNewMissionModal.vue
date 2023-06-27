@@ -6,19 +6,16 @@
     import Modal from '@/Components/Modal.vue';
     import TextInput from '@/Components/TextInput.vue';
     import { useAPIForm } from '@/Composables/useAPIForm';
-    import Overlayer from '@/overlayer';
-    import CreateNewMission from './CreateNewMission.vue';
 
     const form = useAPIForm({
         url: '',
     });
 
     const submit = (resolve) => {
-        Overlayer.show(CreateNewMission);
-
         form.post(route('api.missions.store'), {
-            onSuccess: (response) => {
+            onSuccess: function (response) {
                 resolve(response);
+                router.visit(route('missions.create'));
             },
         });
     };

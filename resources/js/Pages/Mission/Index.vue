@@ -1,26 +1,13 @@
 <script setup>
     import Button from '@/Components/Button.vue';
     import Card from '@/Components/Card.vue';
-    import Overlayer from '@/overlayer';
+    import { useOverlay } from '@/Composables/useOverlay';
     import { router } from '@inertiajs/vue3';
-    import CreateNewMission from './CreateNewMission.vue';
-    import CreateNewMission2 from './CreateNewMission2.vue';
+    import CreateNewMissionModal from './CreateNewMissionModal.vue';
     import MissionPageLayout from './MissionPageLayout.vue';
 
     const createNewMission = () => {
-        console.log('creating');
-        Overlayer.show(CreateNewMission)
-            .then((response) => {
-                console.log('resolving', response);
-            })
-            .catch((error) => {
-                console.log('rejecting', error);
-            });
-    };
-
-    const createNewMission2 = () => {
-        console.log('creating2');
-        Overlayer.show(CreateNewMission2)
+        useOverlay(CreateNewMissionModal)
             .then((response) => {
                 console.log('resolving', response);
             })
@@ -37,8 +24,7 @@
                 >New Mission</Button
             >
 
-            <Button type="button" hierarchy="primary" @click="createNewMission">New Mission Slideout</Button>
-            <Button type="button" hierarchy="primary" @click="createNewMission2">New Mission Modal</Button>
+            <Button type="button" hierarchy="primary" @click="createNewMission">New Mission Modal</Button>
         </template>
         <Card> List of missions </Card>
 

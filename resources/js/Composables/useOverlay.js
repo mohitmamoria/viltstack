@@ -1,7 +1,13 @@
 import { h, render } from 'vue';
 
-class Overlayer {
-    static show(component, props = {}) {
+class Overlay {
+    constructor(component, props = {}) {
+        this.component = component;
+        this.props = props;
+        return this.show();
+    }
+
+    show() {
         let mountEl = document.createElement('div');
         document.body.appendChild(mountEl);
 
@@ -10,21 +16,23 @@ class Overlayer {
         };
 
         return new Promise((resolve, reject) => {
-            props.onResolve = (response) => {
+            this.props.onResolve = (response) => {
                 destroy();
                 resolve(response);
             };
 
-            props.onReject = (error) => {
+            this.props.onReject = (error) => {
                 destroy();
                 reject(error);
             };
 
-            let overlay = h(component, props);
+            let overlay = h(this.component, this.props);
 
             render(overlay, mountEl);
         });
     }
 }
 
-export default Overlayer;
+export function useOverlay(component, props = {}) {
+    return new Overlay(component, props);
+}
